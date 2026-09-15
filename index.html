@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zoom! Black Jet — Power Rankings</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="site-head">
+  <div class="wrap site-head__row">
+    <div class="site-head__brand">
+      <span class="site-head__mark">ZBJ</span>
+      <div>
+        <div class="site-head__title">Zoom! Black Jet</div>
+        <div class="site-head__sub" id="weekLabel">Loading week…</div>
+      </div>
+    </div>
+    <div class="site-head__record" id="leagueMeta"></div>
+  </div>
+</header>
+
+<div class="wrap" id="moversTicker"></div>
+
+<main class="wrap">
+
+  <!-- HERO: the ladder -->
+  <section class="ladder" aria-label="Power rankings">
+    <div class="ladder__head">
+      <h1>Power Rankings</h1>
+      <p class="ladder__note">Ranked by power score — a blend of scoring average, weekly ceiling/floor, and quality of wins.</p>
+    </div>
+    <ol class="ladder__list" id="ladderList"></ol>
+  </section>
+
+  <!-- YOUR TEAM -->
+  <section class="block" id="teamRecapSection" aria-label="Your team's recap">
+    <div class="team-select__row">
+      <h2 class="block__title">Your Team</h2>
+      <div class="team-pills" id="teamPills"></div>
+    </div>
+    <div id="teamRecapBody"></div>
+  </section>
+
+  <!-- POWER SCORE TRENDS -->
+  <section class="block" aria-label="Power score trends">
+    <h2 class="block__title">Power Score Trends</h2>
+    <p class="block__note">Cumulative power score, week by week. Your selected team above is highlighted.</p>
+    <div id="trendChart"></div>
+  </section>
+
+  <!-- WEEKLY RECAP -->
+  <section class="block" id="recapSection" aria-label="Weekly recap">
+    <h2 class="block__title" id="recapTitle">Weekly Recap</h2>
+    <div class="recap-grid" id="recapGrid"></div>
+  </section>
+
+  <!-- PLAYOFF ODDS -->
+  <section class="block" aria-label="Playoff odds">
+    <h2 class="block__title">Playoff Odds</h2>
+    <p class="block__note">Top 6 make it, seeds 1 &amp; 2 get a bye. Odds from an 8,000-season simulation using each team's scoring average and week-to-week variance, weighted toward the league mean early in the year.</p>
+    <div class="odds-table" id="oddsTable"></div>
+  </section>
+
+  <!-- NEXT WEEK SPREADS -->
+  <section class="block" id="spreadSection" aria-label="Upcoming matchups">
+    <h2 class="block__title" id="spreadTitle">Next Week's Spreads</h2>
+    <div class="spread-grid" id="spreadGrid"></div>
+  </section>
+
+  <!-- POSITIONAL POWER RANKINGS -->
+  <section class="block" aria-label="Positional power rankings">
+    <h2 class="block__title">Positional Power Rankings</h2>
+    <p class="block__note">Average starter production by position, across every week with roster data.</p>
+    <div class="position-grid" id="positionGrid"></div>
+  </section>
+
+  <!-- BENCH MANAGEMENT -->
+  <section class="block" aria-label="Bench management">
+    <h2 class="block__title">Bench Management</h2>
+    <p class="block__note" id="benchNote">Actual score vs. the best possible lineup from that week's full roster. Sorted best (least left behind) to worst.</p>
+    <div class="table-wrap">
+      <table class="standings-table" id="benchTable">
+        <thead>
+          <tr><th>#</th><th>Team</th><th>Actual</th><th>Optimal</th><th>Left on Bench</th></tr>
+        </thead>
+        <tbody id="benchBody"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ALL-PLAY RECORD -->
+  <section class="block" aria-label="All-play record">
+    <h2 class="block__title">All-Play Record</h2>
+    <p class="block__note">Every team's record if they'd played the full field every week, instead of just their scheduled opponent. The cleanest read on who's actually been good.</p>
+    <div class="odds-table" id="allPlayTable"></div>
+  </section>
+
+  <!-- STRENGTH OF SCHEDULE -->
+  <section class="block" aria-label="Strength of schedule">
+    <h2 class="block__title">Strength of Schedule</h2>
+    <p class="block__note">Average power score of opponents played and still to come. Higher means tougher.</p>
+    <div class="table-wrap">
+      <table class="standings-table" id="sosTable">
+        <thead>
+          <tr><th>#</th><th>Team</th><th>Past SOS</th><th>Remaining SOS</th><th>Next Up</th></tr>
+        </thead>
+        <tbody id="sosBody"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- FULL STANDINGS TABLE -->
+  <section class="block" aria-label="Full standings">
+    <h2 class="block__title">Standings</h2>
+    <div class="table-wrap">
+      <table class="standings-table" id="standingsTable">
+        <thead>
+          <tr>
+            <th>#</th><th>Team</th><th>Record</th><th>PF</th><th>PA</th>
+            <th>Power</th><th>Luck</th>
+          </tr>
+        </thead>
+        <tbody id="standingsBody"></tbody>
+      </table>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">Updated through Week <span id="footWeek"></span> · Gores Whores League</div>
+</footer>
+
+<script src="data.js"></script>
+<script src="engine.js"></script>
+<script src="main.js"></script>
+</body>
+</html>
