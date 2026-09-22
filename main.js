@@ -197,6 +197,11 @@ function renderTeamRecap(seasonSim) {
       <div class="stat-chip"><div class="stat-chip__label">Power Rank</div><div class="stat-chip__value">#${recap.me.powerRank}</div></div>
       <div class="stat-chip"><div class="stat-chip__label">Luck Score</div><div class="stat-chip__value ${recap.me.luck > 0 ? "luck-pos" : recap.me.luck < 0 ? "luck-neg" : ""}">${signed(recap.me.luck)}</div></div>
     </div>
+    ${(typeof STORYLINES !== "undefined" && STORYLINES[week] && STORYLINES[week].teams[team]) ? `
+      <div class="storyline-card">
+        <div class="storyline-card__label">This Week's Storyline</div>
+        <p class="storyline-card__text">${STORYLINES[week].teams[team]}</p>
+      </div>` : ""}
   `;
 }
 
@@ -350,6 +355,16 @@ function renderRecap() {
   const awards = weeklyAwards(wk);
   const grid = document.getElementById("recapGrid");
   grid.innerHTML = "";
+
+  if (typeof STORYLINES !== "undefined" && STORYLINES[wk] && STORYLINES[wk].league) {
+    const div = document.createElement("div");
+    div.className = "recap-card recap-card--wide";
+    div.innerHTML = `
+      <div class="recap-card__label">Around the league</div>
+      <div class="recap-card__detail">${STORYLINES[wk].league}</div>
+    `;
+    grid.appendChild(div);
+  }
 
   if (!awards) {
     grid.innerHTML = `<div class="recap-card recap-card--wide"><div class="recap-card__label">No games played yet</div></div>`;
