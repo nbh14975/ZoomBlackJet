@@ -504,6 +504,18 @@ function leagueTopScorer(week) {
   return best;
 }
 
+// Career-to-date MVP/Bust tallies for one team, across every played week
+function mvpBustCounts(team) {
+  const weeks = rosterWeeks();
+  const mvpCounts = {}, bustCounts = {};
+  weeks.forEach(w => {
+    const mb = teamMVPBust(team, w);
+    if (mb && mb.mvp) mvpCounts[mb.mvp.n] = (mvpCounts[mb.mvp.n] || 0) + 1;
+    if (mb && mb.bust) bustCounts[mb.bust.n] = (bustCounts[mb.bust.n] || 0) + 1;
+  });
+  return { mvpCounts, bustCounts };
+}
+
 // ---- Weekly awards ------------------------------------------------
 
 function weeklyAwards(week) {
