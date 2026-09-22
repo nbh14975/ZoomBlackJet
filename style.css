@@ -325,6 +325,72 @@ a { color: inherit; }
   margin-top: 2px;
 }
 
+/* ---- Storyline card ---- */
+
+.storyline-card {
+  margin-top: 20px;
+  padding: 16px 20px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--gold);
+  border-radius: var(--radius-md);
+}
+
+.storyline-card__label {
+  color: var(--gold);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  margin-bottom: 6px;
+}
+
+.storyline-card__text {
+  margin: 0;
+  font-size: 14.5px;
+  line-height: 1.6;
+  color: var(--paper);
+}
+
+/* ---- MVP / Bust history ---- */
+
+.history-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.history-panel {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  padding: 14px 16px;
+}
+
+.history-panel__title {
+  font-family: "Space Grotesk", sans-serif;
+  font-weight: 600;
+  font-size: 13px;
+  margin-bottom: 10px;
+}
+
+.history-panel__title--mvp { color: var(--gold); }
+.history-panel__title--bust { color: var(--coral); }
+
+.history-panel__row {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 5px 0;
+  font-size: 13.5px;
+  border-bottom: 1px solid var(--line);
+}
+
+.history-panel__row:last-child { border-bottom: none; }
+.history-panel__name { color: var(--paper); }
+.history-panel__count { color: var(--muted); font-variant-numeric: tabular-nums; }
+.history-panel__empty { color: var(--muted); font-size: 13px; }
+
 /* ---- Positional power rankings ---- */
 
 .position-grid {
@@ -574,4 +640,5 @@ a { color: inherit; }
   .ladder__head h1 { font-size: 28px; }
   .position-grid { grid-template-columns: repeat(2, 1fr); }
   .player-spotlights { flex-direction: column; }
+  .history-grid { grid-template-columns: 1fr; }
 }
