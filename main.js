@@ -164,28 +164,49 @@ function renderTeamRecap(seasonSim) {
   const sentences = buildRecapSentences(recap);
   const prose = sentences.join(" ");
   const mb = teamMVPBust(team, week);
+  const { mvpCounts, bustCounts } = mvpBustCounts(team);
 
   let spotlightHtml = "";
   if (mb && (mb.mvp || mb.bust)) {
     spotlightHtml = `<div class="player-spotlights">`;
     if (mb.mvp) {
+      const count = mvpCounts[mb.mvp.n] || 1;
       spotlightHtml += `
         <div class="player-spotlight player-spotlight--mvp">
-          <div class="player-spotlight__tag">MVP</div>
+          <div class="player-spotlight__tag">MVP${count > 1 ? ` · ${count}x this season` : ""}</div>
           <div class="player-spotlight__name">${mb.mvp.n}</div>
           <div class="player-spotlight__detail">${fmt2(mb.mvp.pts)} pts${typeof mb.mvp.proj === "number" ? ` · proj ${fmt1(mb.mvp.proj)}` : ""}</div>
         </div>`;
     }
     if (mb.bust) {
+      const count = bustCounts[mb.bust.n] || 1;
       spotlightHtml += `
         <div class="player-spotlight player-spotlight--bust">
-          <div class="player-spotlight__tag">BUST</div>
+          <div class="player-spotlight__tag">BUST${count > 1 ? ` · ${count}x this season` : ""}</div>
           <div class="player-spotlight__name">${mb.bust.n}</div>
           <div class="player-spotlight__detail">${fmt2(mb.bust.pts)} pts · proj ${fmt1(mb.bust.proj)}</div>
         </div>`;
     }
     spotlightHtml += `</div>`;
   }
+
+  const mvpList = Object.entries(mvpCounts).sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]));
+  const bustList = Object.entries(bustCounts).sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]));
+  const historyHtml = (mvpList.length || bustList.length) ? `
+    <div class="history-grid">
+      <div class="history-panel">
+        <div class="history-panel__title history-panel__title--mvp">MVP History</div>
+        ${mvpList.length ? mvpList.map(([name, count]) => `
+          <div class="history-panel__row"><span class="history-panel__name">${name}</span><span class="history-panel__count">${count}x</span></div>
+        `).join("") : `<div class="history-panel__empty">No MVPs yet</div>`}
+      </div>
+      <div class="history-panel">
+        <div class="history-panel__title history-panel__title--bust">Bust History</div>
+        ${bustList.length ? bustList.map(([name, count]) => `
+          <div class="history-panel__row"><span class="history-panel__name">${name}</span><span class="history-panel__count">${count}x</span></div>
+        `).join("") : `<div class="history-panel__empty">No busts yet</div>`}
+      </div>
+    </div>` : "";
 
   body.innerHTML = `
     <p class="team-recap__prose">${prose}</p>
@@ -202,6 +223,7 @@ function renderTeamRecap(seasonSim) {
         <div class="storyline-card__label">This Week's Storyline</div>
         <p class="storyline-card__text">${STORYLINES[week].teams[team]}</p>
       </div>` : ""}
+    ${historyHtml}
   `;
 }
 
