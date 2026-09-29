@@ -139,13 +139,28 @@ function projectedDist(team) {
   const sf = scoresForSeries(team);
   const base = leagueBaseline();
   const gp = sf.length;
-  // Shrink small samples toward the league mean (pseudo-count of 3 weeks)
-  const pseudo = 3;
+  // Shrink small samples toward the league mean/variance — early-season
+  // results are noisy, so lean heavily on the league baseline until a team
+  // has enough games to trust its own numbers. Both pseudo-counts represent
+  // "weeks worth" of league-average data blended in.
+  const MEAN_PSEUDO_WEEKS = 8;
+  const VAR_PSEUDO_WEEKS = 8;
+
   const projMean = gp > 0
-    ? (mean(sf) * gp + base.mean * pseudo) / (gp + pseudo)
+    ? (mean(sf) * gp + base.mean * MEAN_PSEUDO_WEEKS) / (gp + MEAN_PSEUDO_WEEKS)
     : base.mean;
-  const projStd = gp >= 3 ? (stddev(sf) || base.std) : base.std;
-  return { mean: projMean, std: projStd };
+
+  // Blend variance (not std directly) with the league's variance, weighted
+  // by games played. A 2-3 game sample variance is extremely noisy on its
+  // own — this keeps one unusually "consistent" or "streaky" small sample
+  // from producing an overconfident (or underconfident) simulation.
+  const baseVar = base.std * base.std;
+  const sampleVar = gp >= 2 ? stddev(sf) ** 2 : null;
+  const projVar = sampleVar !== null
+    ? (sampleVar * gp + baseVar * VAR_PSEUDO_WEEKS) / (gp + VAR_PSEUDO_WEEKS)
+    : baseVar;
+
+  return { mean: projMean, std: Math.sqrt(projVar) };
 }
 
 // Box-Muller normal sample
