@@ -79,6 +79,7 @@ function renderTeamPills() {
       renderTeamPills();
       renderTeamRecap(window.__seasonSim);
       renderPowerHistoryChart();
+      renderOddsHistoryChart();
     });
     container.appendChild(btn);
   });
@@ -371,6 +372,88 @@ function renderBenchManagement() {
   });
 }
 
+function renderOddsHistoryChart() {
+  const container = document.getElementById("oddsTrendChart");
+  const weeks = playedWeeks();
+  const selected = getSelectedTeam();
+
+  if (weeks.length < 1) {
+    container.innerHTML = `<p class="block__note">Nothing to chart yet.</p>`;
+    return;
+  }
+
+  const histories = playoffOddsHistory(weeks.length > 3 ? 2000 : 4000);
+
+  const width = 720, height = 260;
+  const padL = 36, padR = 90, padT = 16, padB = 28;
+  const plotW = width - padL - padR, plotH = height - padT - padB;
+
+  const minP = 0, maxP = 100;
+  const xFor = w => padL + (weeks.length === 1 ? plotW / 2 : ((w - weeks[0]) / (weeks[weeks.length - 1] - weeks[0])) * plotW);
+  const yFor = pct => padT + plotH - ((pct - minP) / (maxP - minP)) * plotH;
+
+  let svg = `<svg class="trend-chart" viewBox="0 0 ${width} ${height}" role="img" aria-label="Playoff odds trends by team">`;
+
+  [0, 50, 100].forEach(v => {
+    const y = yFor(v);
+    svg += `<line class="grid-line" x1="${padL}" y1="${y}" x2="${width - padR}" y2="${y}" />`;
+    svg += `<text x="${padL - 8}" y="${y + 3}" text-anchor="end">${v}%</text>`;
+  });
+  weeks.forEach(w => {
+    svg += `<text x="${xFor(w)}" y="${height - 8}" text-anchor="middle">Wk${w}</text>`;
+  });
+
+  const order = TEAMS.filter(t => t !== selected).concat([selected]);
+  order.forEach(team => {
+    const series = histories[team];
+    const pts = series.map(p => `${xFor(p.week)},${yFor(p.pct * 100)}`).join(" ");
+    const isActive = team === selected;
+    if (series.length === 1) {
+      const p = series[0];
+      svg += `<circle class="${isActive ? "team-dot" : ""}" cx="${xFor(p.week)}" cy="${yFor(p.pct * 100)}" r="${isActive ? 4 : 2.5}" fill="${isActive ? "" : "#3A4658"}" opacity="${isActive ? 1 : 0.55}" />`;
+    } else {
+      svg += `<polyline class="team-line${isActive ? " team-line--active" : ""}" points="${pts}" />`;
+    }
+    if (isActive) {
+      const last = series[series.length - 1];
+      svg += `<text class="team-label" x="${xFor(last.week) + 6}" y="${yFor(last.pct * 100) + 3}">${team}</text>`;
+    }
+  });
+
+  svg += `</svg>`;
+  container.innerHTML = `<div class="trend-chart-wrap">${svg}</div>`;
+}
+
+function renderTrophyCase() {
+  const grid = document.getElementById("trophyGrid");
+  grid.innerHTML = "";
+
+  const { high, low } = seasonHighLow();
+  const { closest, blowout } = seasonMargins();
+  const { best, worst } = seasonBenchExtremes();
+
+  const cards = [
+    { label: "Season high score", value: `${high.team} — ${fmt2(high.score)}`, detail: `Week ${high.week}` },
+    { label: "Season low score", value: `${low.team} — ${fmt2(low.score)}`, detail: `Week ${low.week}` },
+    { label: "Biggest blowout", value: `${blowout.winner} def. ${blowout.loser}`, detail: `By ${fmt2(blowout.diff)} points, Week ${blowout.week}` },
+    { label: "Closest game", value: `${closest.winner} def. ${closest.loser}`, detail: `By ${fmt2(closest.diff)} points, Week ${closest.week}` }
+  ];
+
+  if (best) cards.push({ label: "Best lineup set", value: `${best.team}`, detail: `Only ${fmt2(best.left)} points left on the bench, Week ${best.week}` });
+  if (worst) cards.push({ label: "Worst lineup set", value: `${worst.team}`, detail: `${fmt2(worst.left)} points left on the bench, Week ${worst.week}` });
+
+  cards.forEach(c => {
+    const div = document.createElement("div");
+    div.className = "recap-card";
+    div.innerHTML = `
+      <div class="recap-card__label">${c.label}</div>
+      <div class="recap-card__value">${c.value}</div>
+      <div class="recap-card__detail">${c.detail}</div>
+    `;
+    grid.appendChild(div);
+  });
+}
+
 function renderRecap() {
   const wk = latestWeek();
   document.getElementById("recapTitle").textContent = wk ? `Week ${wk} Recap` : "Weekly Recap";
@@ -570,11 +653,13 @@ function render() {
   renderPowerHistoryChart();
   renderRecap();
   renderOddsFromSim(window.__seasonSim);
+  renderOddsHistoryChart();
   renderSpreads();
   renderAllPlay();
   renderSOS();
   renderPositionalRankings();
   renderBenchManagement();
+  renderTrophyCase();
   renderStandingsTable();
 }
 
