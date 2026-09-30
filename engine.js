@@ -47,9 +47,9 @@ function stddev(arr) {
 }
 
 // League-wide baseline (used to stabilize early-season projections)
-function leagueBaseline() {
+function leagueBaseline(upToWeek) {
   const all = [];
-  playedWeeks().forEach(w => TEAMS.forEach(t => all.push(WEEKLY_SCORES[w][t])));
+  playedWeeks(upToWeek).forEach(w => TEAMS.forEach(t => all.push(WEEKLY_SCORES[w][t])));
   return { mean: mean(all), std: stddev(all) || 20 };
 }
 
@@ -135,9 +135,9 @@ function powerRankAsOfWeek(w) {
 
 // ---- Projection model for simulation ---------------------------
 
-function projectedDist(team) {
-  const sf = scoresForSeries(team);
-  const base = leagueBaseline();
+function projectedDist(team, upToWeek) {
+  const sf = scoresForSeries(team, upToWeek);
+  const base = leagueBaseline(upToWeek);
   const gp = sf.length;
   // Shrink small samples toward the league mean/variance — early-season
   // results are noisy, so lean heavily on the league baseline until a team
@@ -173,21 +173,21 @@ function sampleNormal(mean, std) {
 
 // ---- Monte Carlo season + playoff simulation --------------------
 
-function simulateSeason(numSims = 8000) {
+function simulateSeason(numSims = 8000, asOfWeek) {
+  const week = typeof asOfWeek === "number" ? asOfWeek : latestWeek();
   const dists = {};
-  TEAMS.forEach(t => (dists[t] = projectedDist(t)));
+  TEAMS.forEach(t => (dists[t] = projectedDist(t, week)));
 
-  const playedThroughWeek = latestWeek();
   const remainingWeeks = [];
-  for (let w = playedThroughWeek + 1; w <= REGULAR_SEASON_WEEKS; w++) remainingWeeks.push(w);
+  for (let w = week + 1; w <= REGULAR_SEASON_WEEKS; w++) remainingWeeks.push(w);
 
   const playoffCount = {}, champCount = {}, finalsCount = {};
   TEAMS.forEach(t => { playoffCount[t] = 0; champCount[t] = 0; finalsCount[t] = 0; });
 
   const baseRecord = {};
   TEAMS.forEach(t => {
-    const { wins, losses } = record(t);
-    const sf = scoresForSeries(t);
+    const { wins, losses } = record(t, week);
+    const sf = scoresForSeries(t, week);
     baseRecord[t] = { wins, losses, pf: sf.reduce((a, b) => a + b, 0) };
   });
 
@@ -241,6 +241,19 @@ function simulateSeason(numSims = 8000) {
     };
   });
   return results;
+}
+
+// Playoff-odds trajectory: re-runs the simulation as of each past week,
+// using only the data that would have been known at that point.
+function playoffOddsHistory(numSimsPerWeek = 4000) {
+  const weeks = playedWeeks();
+  const history = {};
+  TEAMS.forEach(t => (history[t] = []));
+  weeks.forEach(w => {
+    const sim = simulateSeason(numSimsPerWeek, w);
+    TEAMS.forEach(t => history[t].push({ week: w, pct: sim[t].playoffPct }));
+  });
+  return history;
 }
 
 // ---- American odds formatting -----------------------------------
@@ -529,6 +542,53 @@ function mvpBustCounts(team) {
     if (mb && mb.bust) bustCounts[mb.bust.n] = (bustCounts[mb.bust.n] || 0) + 1;
   });
   return { mvpCounts, bustCounts };
+}
+
+// ---- Trophy Case / season superlatives --------------------------------
+
+function seasonHighLow() {
+  let high = null, low = null;
+  playedWeeks().forEach(w => {
+    TEAMS.forEach(t => {
+      const score = WEEKLY_SCORES[w][t];
+      if (!high || score > high.score) high = { team: t, week: w, score };
+      if (!low || score < low.score) low = { team: t, week: w, score };
+    });
+  });
+  return { high, low };
+}
+
+function seasonMargins() {
+  let closest = null, blowout = null;
+  playedWeeks().forEach(w => {
+    const done = new Set();
+    TEAMS.forEach(t => {
+      if (done.has(t)) return;
+      const opp = opponentOf(t, w);
+      done.add(t); done.add(opp);
+      const diff = Math.abs(WEEKLY_SCORES[w][t] - WEEKLY_SCORES[w][opp]);
+      const winner = WEEKLY_SCORES[w][t] > WEEKLY_SCORES[w][opp] ? t : opp;
+      const loser = winner === t ? opp : t;
+      const entry = { winner, loser, diff, week: w };
+      if (!closest || diff < closest.diff) closest = entry;
+      if (!blowout || diff > blowout.diff) blowout = entry;
+    });
+  });
+  return { closest, blowout };
+}
+
+function seasonBenchExtremes() {
+  let best = null, worst = null;
+  rosterWeeks().forEach(w => {
+    TEAMS.forEach(t => {
+      const r = benchPointsLeft(t, w);
+      if (!r) return;
+      const entry = { team: t, week: w, left: r.left };
+      if (!best || entry.left < best.left) best = entry;
+      if (!worst || entry.left > worst.left) worst = entry;
+    });
+  });
+  return { best, worst };
 }
 
 // ---- Weekly awards ------------------------------------------------
