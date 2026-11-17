@@ -65,6 +65,10 @@ const WEEKLY_SCORES = {
   9: {
     Evan: 160.28, Noah: 159.18, Hampton: 139.36, Logan: 129.8, Reese: 125.08,
     Brandon: 121.92, Seth: 117.6, Matthew: 115.54, JD: 100.16, Mirsky: 85.76
+  },
+  10: {
+    Brandon: 167.16, JD: 161.56, Seth: 155.62, Logan: 151.52, Mirsky: 151.34,
+    Noah: 143.36, Reese: 142.08, Matthew: 99.5, Evan: 97.1, Hampton: 86.92
   }
 };
 
@@ -1719,6 +1723,188 @@ const ROSTERS = {
       { n: "Tyler Shough", pos: "QB", proj: 15.2, pts: 19.7, started: false },
       { n: "Mark Andrews", pos: "TE", proj: 6.3, pts: 3.9, started: false }
     ]
+  },
+  10: {
+    Noah: [
+      { n: "Brock Purdy", pos: "QB", proj: 20.7, pts: 31.66, started: true },
+      { n: "Chuba Hubbard", pos: "RB", proj: 20.0, pts: 34.2, started: true },
+      { n: "James Cook III", pos: "RB", proj: 20.5, pts: 21.7, started: true },
+      { n: "Amon-Ra St. Brown", pos: "WR", proj: 20.4, pts: 25.8, started: true },
+      { n: "Christian Watson", pos: "WR", proj: 15.7, pts: 6.7, started: true },
+      { n: "Tyler Warren", pos: "TE", proj: 10.6, pts: 2.4, started: true },
+      { n: "Zach Charbonnet", pos: "RB", proj: 14.5, pts: 9.4, started: true },
+      { n: "Ravens", pos: "DST", proj: 7.8, pts: 4.0, started: true },
+      { n: "Ka'imi Fairbairn", pos: "K", proj: 10.6, pts: 7.5, started: true },
+      { n: "Luther Burden III", pos: "WR", proj: 0.0, pts: 0.0, started: false },
+      { n: "Woody Marks", pos: "RB", proj: 14.2, pts: 7.5, started: false },
+      { n: "Alvin Kamara", pos: "RB", proj: 8.1, pts: 16.4, started: false },
+      { n: "Kaelon Black", pos: "RB", proj: 7.6, pts: 14.6, started: false },
+      { n: "Ray Davis", pos: "RB", proj: 2.0, pts: 0.8, started: false },
+      { n: "Antonio Williams", pos: "WR", proj: 7.8, pts: 12.2, started: false },
+      { n: "49ers", pos: "DST", proj: 4.5, pts: -1.0, started: false }
+    ],
+    Mirsky: [
+      { n: "Josh Allen", pos: "QB", proj: 24.3, pts: 22.34, started: true },
+      { n: "Bhayshul Tuten", pos: "RB", proj: 17.3, pts: 20.3, started: true },
+      { n: "Ollie Gordon II", pos: "RB", proj: 15.7, pts: 15.5, started: true },
+      { n: "Justin Jefferson", pos: "WR", proj: 18.8, pts: 16.4, started: true },
+      { n: "Nico Collins", pos: "WR", proj: 13.7, pts: 24.4, started: true },
+      { n: "Harold Fannin Jr.", pos: "TE", proj: 10.1, pts: 16.1, started: true },
+      { n: "Garrett Wilson", pos: "WR", proj: 12.7, pts: 15.6, started: true },
+      { n: "Seahawks", pos: "DST", proj: 7.0, pts: 12.0, started: true },
+      { n: "Matt Gay", pos: "K", proj: 8.8, pts: 8.7, started: true },
+      { n: "C.J. Stroud", pos: "QB", proj: 18.3, pts: 20.44, started: false },
+      { n: "Broncos", pos: "DST", proj: 0.0, pts: 0.0, started: false },
+      { n: "Hunter Henry", pos: "TE", proj: 8.8, pts: 4.2, started: false },
+      { n: "DeVonta Smith", pos: "WR", proj: 0.0, pts: 0.0, started: false },
+      { n: "Adonai Mitchell", pos: "WR", proj: 10.3, pts: 8.9, started: false },
+      { n: "Chris Rodriguez Jr.", pos: "RB", proj: 6.9, pts: 0.5, started: false },
+      { n: "D'Andre Swift", pos: "RB", proj: 0.0, pts: 0.0, started: false }
+    ],
+    Brandon: [
+      { n: "Joe Burrow", pos: "QB", proj: 19.0, pts: 33.16, started: true },
+      { n: "Breece Hall", pos: "RB", proj: 12.1, pts: 14.8, started: true },
+      { n: "Cam Skattebo", pos: "RB", proj: 11.5, pts: 27.2, started: true },
+      { n: "Ja'Marr Chase", pos: "WR", proj: 22.9, pts: 34.1, started: true },
+      { n: "Malik Nabers", pos: "WR", proj: 16.1, pts: 7.4, started: true },
+      { n: "Travis Kelce", pos: "TE", proj: 11.6, pts: 5.0, started: true },
+      { n: "Derrick Henry", pos: "RB", proj: 18.2, pts: 19.0, started: true },
+      { n: "Vikings", pos: "DST", proj: 5.0, pts: 21.0, started: true },
+      { n: "Chris Boswell", pos: "K", proj: 11.2, pts: 5.5, started: true },
+      { n: "Germie Bernard", pos: "WR", proj: 10.9, pts: 1.0, started: false },
+      { n: "Rachaad White", pos: "RB", proj: 10.9, pts: 6.2, started: false },
+      { n: "Omar Cooper Jr.", pos: "WR", proj: 9.5, pts: 0.0, started: false },
+      { n: "Rico Dowdle", pos: "RB", proj: 9.8, pts: 5.4, started: false },
+      { n: "Bears", pos: "DST", proj: 0.0, pts: 0.0, started: false },
+      { n: "Corey Kiner", pos: "RB", proj: 6.8, pts: 2.5, started: false },
+      { n: "J.K. Dobbins", pos: "RB", proj: 0.0, pts: 0.0, started: false }
+    ],
+    Reese: [
+      { n: "Trevor Lawrence", pos: "QB", proj: 21.5, pts: 26.78, started: true },
+      { n: "Ashton Jeanty", pos: "RB", proj: 13.6, pts: 10.4, started: true },
+      { n: "Chase Brown", pos: "RB", proj: 13.5, pts: 28.3, started: true },
+      { n: "CeeDee Lamb", pos: "WR", proj: 20.8, pts: 20.2, started: true },
+      { n: "Parker Washington", pos: "WR", proj: 14.4, pts: 28.2, started: true },
+      { n: "Dalton Kincaid", pos: "TE", proj: 8.8, pts: 7.8, started: true },
+      { n: "Chris Olave", pos: "WR", proj: 15.8, pts: 6.0, started: true },
+      { n: "Jaguars", pos: "DST", proj: 6.2, pts: 3.0, started: true },
+      { n: "Brandon Aubrey", pos: "K", proj: 11.1, pts: 11.4, started: true },
+      { n: "Omarion Hampton", pos: "RB", proj: 7.9, pts: 17.5, started: false },
+      { n: "Rome Odunze", pos: "WR", proj: 0.0, pts: 0.0, started: false },
+      { n: "Mike Washington Jr.", pos: "RB", proj: 6.0, pts: 3.7, started: false },
+      { n: "T.J. Hockenson", pos: "TE", proj: 0.0, pts: 0.0, started: false },
+      { n: "KC Concepcion", pos: "WR", proj: 10.6, pts: 11.7, started: false },
+      { n: "Kimani Vidal", pos: "RB", proj: 7.8, pts: 3.4, started: false },
+      { n: "Steelers", pos: "DST", proj: 5.5, pts: -7.0, started: false }
+    ],
+    Matthew: [
+      { n: "Bryce Young", pos: "QB", proj: 18.8, pts: 8.1, started: true },
+      { n: "Christian McCaffrey", pos: "RB", proj: 21.8, pts: 46.3, started: true },
+      { n: "Rhamondre Stevenson", pos: "RB", proj: 13.4, pts: 1.5, started: true },
+      { n: "A.J. Brown", pos: "WR", proj: 12.5, pts: 4.7, started: true },
+      { n: "Stefon Diggs", pos: "WR", proj: 10.3, pts: 20.3, started: true },
+      { n: "Tucker Kraft", pos: "TE", proj: 9.4, pts: 2.9, started: true },
+      { n: "Denzel Boston", pos: "WR", proj: 12.7, pts: 2.6, started: true },
+      { n: "Texans", pos: "DST", proj: 7.1, pts: 5.0, started: true },
+      { n: "Spencer Shrader", pos: "K", proj: 11.3, pts: 8.1, started: true },
+      { n: "Ladd McConkey", pos: "WR", proj: 0.0, pts: 0.0, started: false },
+      { n: "Colston Loveland", pos: "TE", proj: 0.0, pts: 0.0, started: false },
+      { n: "Jadarian Price", pos: "RB", proj: 11.9, pts: 11.4, started: false },
+      { n: "Caleb Williams", pos: "QB", proj: 0.0, pts: 0.0, started: false },
+      { n: "Jalen Coker", pos: "WR", proj: 11.3, pts: 0.3, started: false },
+      { n: "Tyler Allgeier", pos: "RB", proj: 8.7, pts: 1.4, started: false },
+      { n: "Caleb Douglas", pos: "WR", proj: 8.7, pts: 10.1, started: false }
+    ],
+    Seth: [
+      { n: "Dak Prescott", pos: "QB", proj: 16.6, pts: 34.42, started: true },
+      { n: "Jahmyr Gibbs", pos: "RB", proj: 23.9, pts: 44.2, started: true },
+      { n: "Tony Pollard", pos: "RB", proj: 13.5, pts: 23.9, started: true },
+      { n: "Drake London", pos: "WR", proj: 14.8, pts: 16.9, started: true },
+      { n: "Jameson Williams", pos: "WR", proj: 12.1, pts: 9.0, started: true },
+      { n: "Brock Bowers", pos: "TE", proj: 15.4, pts: 3.8, started: true },
+      { n: "Zay Flowers", pos: "WR", proj: 14.6, pts: 11.4, started: true },
+      { n: "Bills", pos: "DST", proj: 6.2, pts: 10.0, started: true },
+      { n: "Jason Myers", pos: "K", proj: 9.5, pts: 2.0, started: true },
+      { n: "DK Metcalf", pos: "WR", proj: 10.6, pts: 15.4, started: false },
+      { n: "Jakobi Meyers", pos: "WR", proj: 11.6, pts: 6.4, started: false },
+      { n: "Josh Downs", pos: "WR", proj: 10.4, pts: 15.3, started: false },
+      { n: "Tyjae Spears", pos: "RB", proj: 6.1, pts: 3.8, started: false },
+      { n: "Dallas Goedert", pos: "TE", proj: 0.0, pts: 0.0, started: false },
+      { n: "Jonah Coleman", pos: "RB", proj: 0.0, pts: 0.0, started: false },
+      { n: "Braelon Allen", pos: "RB", proj: 7.9, pts: 5.6, started: false }
+    ],
+    Hampton: [
+      { n: "Drake Maye", pos: "QB", proj: 22.0, pts: 3.02, started: true },
+      { n: "Aaron Jones Sr.", pos: "RB", proj: 8.6, pts: 12.5, started: true },
+      { n: "Jordan Mason", pos: "RB", proj: 9.2, pts: 5.9, started: true },
+      { n: "Jaxon Smith-Njigba", pos: "WR", proj: 22.3, pts: 31.1, started: true },
+      { n: "Tetairoa McMillan", pos: "WR", proj: 16.0, pts: 6.5, started: true },
+      { n: "Trey McBride", pos: "TE", proj: 14.1, pts: 8.7, started: true },
+      { n: "Rashee Rice", pos: "WR", proj: 13.4, pts: 13.2, started: true },
+      { n: "Commanders", pos: "DST", proj: 6.7, pts: 4.0, started: true },
+      { n: "Dominic Zvada", pos: "K", proj: 8.7, pts: 2.0, started: true },
+      { n: "Bucky Irving", pos: "RB", proj: 0.0, pts: 0.0, started: false },
+      { n: "Kenny Gainwell", pos: "RB", proj: 0.0, pts: 0.0, started: false },
+      { n: "Patrick Mahomes", pos: "QB", proj: 18.5, pts: 35.42, started: false },
+      { n: "Malik Washington", pos: "WR", proj: 8.9, pts: 13.36, started: false },
+      { n: "Tre Tucker", pos: "WR", proj: 8.4, pts: 1.9, started: false },
+      { n: "Makai Lemon", pos: "WR", proj: 0.0, pts: 0.0, started: false },
+      { n: "Audric Estime", pos: "RB", proj: 5.0, pts: 2.1, started: false }
+    ],
+    JD: [
+      { n: "Jayden Daniels", pos: "QB", proj: 17.7, pts: 20.76, started: true },
+      { n: "Jonathan Taylor", pos: "RB", proj: 17.9, pts: 12.3, started: true },
+      { n: "Kyren Williams", pos: "RB", proj: 18.6, pts: 5.2, started: true },
+      { n: "DJ Moore", pos: "WR", proj: 13.3, pts: 19.4, started: true },
+      { n: "Keenan Allen", pos: "WR", proj: 8.7, pts: 11.1, started: true },
+      { n: "Isaiah Likely", pos: "TE", proj: 12.2, pts: 27.7, started: true },
+      { n: "Emmett Johnson", pos: "RB", proj: 18.3, pts: 35.1, started: true },
+      { n: "Chiefs", pos: "DST", proj: 4.9, pts: 9.0, started: true },
+      { n: "Cam Little", pos: "K", proj: 10.3, pts: 21.0, started: true },
+      { n: "Emeka Egbuka", pos: "WR", proj: 0.0, pts: 0.0, started: false },
+      { n: "Mike Evans", pos: "WR", proj: 0.0, pts: 0.0, started: false },
+      { n: "Jordan Addison", pos: "WR", proj: 0.0, pts: 0.0, started: false },
+      { n: "Kyle Monangai", pos: "RB", proj: 0.0, pts: 0.0, started: false },
+      { n: "Tyler Shough", pos: "QB", proj: 17.5, pts: 9.98, started: false },
+      { n: "Mark Andrews", pos: "TE", proj: 6.9, pts: 16.2, started: false },
+      { n: "Wan'Dale Robinson", pos: "WR", proj: 10.3, pts: 4.0, started: false }
+    ],
+    Evan: [
+      { n: "Jordan Love", pos: "QB", proj: 16.1, pts: 10.8, started: true },
+      { n: "Javonte Williams", pos: "RB", proj: 14.8, pts: 7.7, started: true },
+      { n: "Quinshon Judkins", pos: "RB", proj: 11.8, pts: 16.1, started: true },
+      { n: "Matthew Golden", pos: "WR", proj: 17.2, pts: 12.0, started: true },
+      { n: "DeMario Douglas", pos: "WR", proj: 10.0, pts: 1.4, started: true },
+      { n: "George Kittle", pos: "TE", proj: 15.3, pts: 13.4, started: true },
+      { n: "Blake Corum", pos: "RB", proj: 11.6, pts: 20.9, started: true },
+      { n: "Browns", pos: "DST", proj: 4.2, pts: 5.0, started: true },
+      { n: "Chad Ryland", pos: "K", proj: 8.4, pts: 9.8, started: true },
+      { n: "Puka Nacua", pos: "WR", proj: 0.0, pts: 0.0, started: false },
+      { n: "Saquon Barkley", pos: "RB", proj: 0.0, pts: 0.0, started: false },
+      { n: "Kyle Pitts Sr.", pos: "TE", proj: 9.2, pts: 7.0, started: false },
+      { n: "Devaughn Vele", pos: "WR", proj: 7.4, pts: 3.4, started: false },
+      { n: "Roschon Johnson", pos: "RB", proj: 0.0, pts: 0.0, started: false },
+      { n: "Demarcus Robinson", pos: "WR", proj: 6.4, pts: 0.0, started: false },
+      { n: "Xavier Hutchinson", pos: "WR", proj: 9.6, pts: 15.8, started: false }
+    ],
+    Logan: [
+      { n: "Jared Goff", pos: "QB", proj: 17.3, pts: 20.42, started: true },
+      { n: "Bijan Robinson", pos: "RB", proj: 18.6, pts: 17.7, started: true },
+      { n: "Jaylen Warren", pos: "RB", proj: 15.5, pts: 9.1, started: true },
+      { n: "George Pickens", pos: "WR", proj: 12.2, pts: 43.5, started: true },
+      { n: "Tee Higgins", pos: "WR", proj: 16.2, pts: 11.6, started: true },
+      { n: "Sam LaPorta", pos: "TE", proj: 11.4, pts: 2.6, started: true },
+      { n: "Jordyn Tyson", pos: "WR", proj: 8.6, pts: 19.0, started: true },
+      { n: "Rams", pos: "DST", proj: 8.3, pts: 16.0, started: true },
+      { n: "Will Reichard", pos: "K", proj: 10.0, pts: 11.6, started: true },
+      { n: "Jaylen Waddle", pos: "WR", proj: 0.0, pts: 0.0, started: false },
+      { n: "Carnell Tate", pos: "WR", proj: 0.0, pts: 0.0, started: false },
+      { n: "Brenton Strange", pos: "TE", proj: 9.6, pts: 8.9, started: false },
+      { n: "Giants", pos: "DST", proj: 5.4, pts: 5.0, started: false },
+      { n: "Ryan Flournoy", pos: "WR", proj: 8.4, pts: 19.1, started: false },
+      { n: "Tank Dell", pos: "WR", proj: 10.2, pts: 5.1, started: false },
+      { n: "Dylan Sampson", pos: "RB", proj: 8.9, pts: 7.7, started: false }
+    ]
   }
 };
 
@@ -1844,6 +2030,21 @@ const STORYLINES = {
       JD: "JD scored 100.16 and lost to Evan by 60.12, and even a perfect lineup (108.40) would not have been close. Isaiah Likely (16.3, his 4th team MVP) led the way in the Giants' win over Philadelphia, Tyler Bass made three field goals to extend his franchise-record streak to 24 straight (13.6), the Chiefs defense (12.0) held the Jets to 12, and Jayden Daniels (14.56) threw for 274 yards and a touchdown but fumbled in Washington's 20-13 loss to the Rams. Jonathan Taylor (9.4 against a 19.6 projection, his 2nd team bust) ran for just 46 yards and lost a fumble in Indianapolis' fifth straight loss, and Keenan Allen's 6.6 came on the day he passed Tim Brown for eighth on the career receptions list. Tyler Shough (19.7, 265 yards in New Orleans' overtime win) sat on the bench. JD is 4-5, down one spot to #8, and next faces Hampton, a 9-point underdog.",
       Mirsky: "Mirsky had the lowest score of the week, 85.76, and lost to Logan by 44.04. The biggest mistake was at quarterback: C.J. Stroud (35.36, five touchdowns and 384 yards) sat on the bench while Josh Allen (12.86, 21-of-31 for 234 yards, a touchdown and an interception) started, a 22.50-point swing, and 30.60 points were left on the bench overall. D'Andre Swift (3.1 against an 18.6 projection, 12 carries for 31 yards, his first team bust) and Justin Jefferson (8.8, three catches for 58 yards on 11 targets) sputtered, while Nico Collins (15.5, a 13-yard touchdown from Stroud) and Harold Fannin Jr. (12.2, a 39-yard touchdown in overtime) were the best of it. Even a perfect lineup (116.36) would not have caught Logan. Mirsky is 2-7, fell a spot to #9, and next faces Noah.",
       Matthew: "Matthew lost to Reese by 9.54 and a perfect lineup (137.44) would have won it. Christian McCaffrey (22.7, his 6th team MVP) was part of San Francisco's win in which he set the Super Bowl-era record for receiving touchdowns by a running back, Bryce Young (20.34) led Carolina's 26-21 loss, Spencer Shrader (17.6) hit field goals from 59 and 50 yards for the Colts, and the Texans defense (12.0) sacked Justin Herbert eight times. Tucker Kraft (1.9, his first team bust) disappeared in a 45-point Packers game, Tyler Allgeier (6.6) and Jalen Coker (6.6) did little, and Rhamondre Stevenson (14.8) left with a knee injury. Denzel Boston (15.8) and Jadarian Price (11.8) sat on the bench with 21.90 points left behind. Matthew is 1-8 and still #10, with Seth next."
+    }
+  },
+  10: {
+    league: "Week 10 belonged to the big plays and the first wins. The Los Angeles Chargers finally won, 23-20 at Baltimore on Monday night, ending an 0-8 start and a 331-day drought behind a Justin Herbert touchdown run and an Omarion Hampton score while Derrick Henry was held to 10 yards on 10 carries. Christian McCaffrey caught touchdowns of 74 and 66 yards from Brock Purdy and finished with three scores and 223 yards from scrimmage in San Francisco's 46-40 shootout in Dallas, where George Pickens caught three touchdowns and a season-high 145 yards for the Cowboys. In Munich, Jahmyr Gibbs ran and caught his way to 252 yards from scrimmage and two touchdowns in Detroit's 35-10 win over New England, a record for touchdowns in a player's first four seasons, and Drake Maye left on the opening drive with an ankle injury. Joe Burrow threw for 409 yards and four touchdowns, Ja'Marr Chase caught 11 passes for 231 yards, and Cincinnati beat Pittsburgh 38-18 to take the AFC North alone, Burrow's fifth straight game with at least four total touchdowns, tying Peyton Manning's record. Patrick Mahomes threw five touchdown passes in Kansas City's 35-13 win over Atlanta, Jaxon Smith-Njigba caught eight for 171 yards in Seattle's 21-13 win over Las Vegas, and Fernando Mendoza made his first start in that game, scoring a 10-yard rushing touchdown. Kirk Cousins' first game back led Minnesota to a 30-10 win at Lambeau, where Jordan Love was sacked a career-high eight times. Cleveland came back from 17-0 to beat Houston 27-24 on Quinshon Judkins' 5-yard touchdown with 53 seconds left, Carolina beat New Orleans 20-17 on Ryan Fitzgerald's 54-yard field goal as time expired after Chuba Hubbard scored twice, Jacksonville beat Tennessee 40-23 behind Trevor Lawrence's 352 yards, and Buffalo beat the Jets 31-12 as James Cook ran for 157 yards. Elsewhere, the Rams beat Arizona 34-6, Indianapolis beat Miami 24-22, and Washington beat the Giants 24-21 on Thursday on a Jayden Daniels touchdown pass to Stefon Diggs with under a minute left.",
+    teams: {
+      Logan: "Logan beat Evan 151.52 to 97.10 and sits at 8-2, #1 in the power rankings with a locked playoff spot. George Pickens (43.5 against a 12.2 projection, the biggest boom of the week and Logan's first team MVP) caught three touchdowns from Dak Prescott and a season-high 145 yards in Dallas' 46-40 loss to San Francisco. The Rams defense (16.0) helped in a 34-6 win at Arizona, Jordyn Tyson (19.0) had 11 catches in New Orleans' loss at Carolina, and Jared Goff (20.42) and Bijan Robinson (17.7) chipped in. Sam LaPorta (2.6 against 11.4) was the miss, and 13.80 points stayed on the bench, led by Ryan Flournoy's 19.1 after a touchdown catch in Dallas. Hampton is next, with Logan a 4.5-point favorite.",
+      Hampton: "Hampton lost to JD 161.56 to 86.92 and posted the lowest score of the week, 39.26 points behind on the bench. Drake Maye (3.02 against a 22.0 projection, his 2nd team bust) left New England's 35-10 loss to Detroit on the opening drive with an ankle injury, while Patrick Mahomes sat on the bench and threw five touchdowns (35.42) in Kansas City's 35-13 win over Atlanta. Jaxon Smith-Njigba (31.1, his 7th team MVP) caught eight passes for 171 yards and a 71-yard touchdown, and now has 1,207 receiving yards through 10 games. Hampton is still 8-2, #2 in the power rankings and a locked playoff team, but plays Logan next week as a 4.5-point underdog.",
+      Reese: "Reese lost to Brandon 167.16 to 142.08, a loss even Reese's optimal lineup of 154.88 would not have fixed. Chase Brown (28.3, his first team MVP) scored twice as a receiver in Cincinnati's 38-18 win over Pittsburgh, Parker Washington (28.2) set a career high with 152 yards and a touchdown, and Trevor Lawrence (26.78) threw for 352 yards in Jacksonville's 40-23 win in Tennessee. Chris Olave (6.0 against 15.8, his first team bust) did not catch a pass until midway through the third quarter in New Orleans' 20-17 loss at Carolina, and Omarion Hampton (17.5) ran for a touchdown for the Chargers from Reese's bench. At 6-4 and #3, Reese is -908 to make the playoffs and meets Seth next week as a 1.5-point underdog.",
+      Brandon: "Brandon beat Reese 167.16 to 142.08 for the top score of the week, 45.53 points above the league average, with a perfect lineup and nothing left on the bench. Ja'Marr Chase (34.1, his 4th team MVP) caught 11 passes for 231 yards, Joe Burrow (33.16) threw for 409 yards and four touchdowns in Cincinnati's 38-18 win over Pittsburgh, Cam Skattebo (27.2) and Derrick Henry (19.0) chipped in, and the Vikings defense (21.0) sacked Jordan Love eight times in a 30-10 win at Green Bay. Malik Nabers (7.4 against 16.1, his 2nd team bust) was the only real miss. Brandon is 5-5, up two spots to #4, and is -288 for the playoffs, with JD next as a 3-point favorite.",
+      Seth: "Seth beat Matthew 155.62 to 99.50 at 5-5, #6, and is -390 for the playoffs. Jahmyr Gibbs (44.2, his 5th team MVP) had 252 yards from scrimmage and two touchdowns in Detroit's 35-10 win in Munich, and Dak Prescott (34.42) threw five touchdowns in Dallas' 46-40 loss to San Francisco, three of them to Pickens. Zay Flowers (11.4) fumbled in the closing minutes of Baltimore's 23-20 loss to the Chargers, and Brock Bowers (3.8 against 15.4, his 2nd team bust) left Las Vegas' loss with an injury. 10.30 points stayed on the bench, led by DK Metcalf (15.4). Reese is next as a 1.5-point favorite.",
+      Noah: "Noah lost to Mirsky 143.36 to 151.34 in the closest game of the week, a 7.98-point margin, and Noah's optimal lineup (155.86) would have won. Chuba Hubbard (34.2, his first team MVP) scored twice and gained 92 yards on 27 carries, plus 80 more on five catches, in Carolina's 20-17 win over New Orleans, Brock Purdy (31.66) threw for 389 yards in San Francisco's 46-40 win, and James Cook III (21.7) ran for 157 yards and a 74-yard touchdown in Buffalo's 31-12 win. Christian Watson (6.7 against 15.7, his 2nd team bust) disappointed, and Alvin Kamara (16.4) sat on the bench after scoring twice in New Orleans' loss. At 5-5 and #5, Noah is -378 for the playoffs and is an 8-point favorite over Evan next.",
+      JD: "JD beat Hampton 161.56 to 86.92 at 5-5, up one spot to #7, and is -102 for the playoffs. Emmett Johnson (35.1, his first team MVP) ran 22 times for 101 yards and caught six passes for 70 more with two touchdowns in Kansas City's 35-13 win over Atlanta, Cam Little (21.0) kicked four field goals in Jacksonville's win in Tennessee, Isaiah Likely (27.7) had a big day, and DJ Moore (19.4) caught a 45-yard touchdown from Josh Allen in Buffalo's win. Kyren Williams (5.2 against 18.6, his 2nd team bust) was the miss, and Mark Andrews (16.2) sat on the bench. Brandon is next, a 3-point underdog.",
+      Evan: "Evan lost to Logan 97.10 to 151.52 at 4-6, down two spots to #9, and is +522 for the playoffs. Blake Corum (20.9, his first team MVP) scored for the sixth straight game in the Rams' 34-6 win at Arizona, Quinshon Judkins (16.1) scored the winning 5-yard touchdown with 53 seconds left in Cleveland's comeback from 17-0 to beat Houston, and Chad Ryland (9.8) kicked two field goals for Arizona. Jordan Love (10.8) was sacked a career-high eight times in Minnesota's 30-10 win at Lambeau, and DeMario Douglas (1.4 against 10.0, his first team bust) was part of a New England offense that lost Drake Maye on the first drive. 14.40 points stayed on the bench, led by Xavier Hutchinson (15.8). Noah is next, and Evan is an 8-point underdog.",
+      Mirsky: "Mirsky beat Noah 151.34 to 143.36 in the closest game of the week with a perfect lineup, nothing left on the bench. Nico Collins (24.4, his 2nd team MVP) led the way in Houston's 27-24 loss to Cleveland, Josh Allen (22.34) ran for two touchdowns and threw a 45-yard score in Buffalo's 31-12 win, Bhayshul Tuten (20.3) scored a late touchdown to seal Jacksonville's 40-23 win, and the Seahawks defense (12.0) sacked Fernando Mendoza's Raiders six times. Justin Jefferson (16.4 against 18.8, his 3rd team bust) caught nine passes for 74 yards in Cousins' first game back. At 3-7 and #8, up one spot, Mirsky is +870 for the playoffs and a 13.5-point favorite over Matthew next.",
+      Matthew: "Matthew lost to Seth 99.50 to 155.62 at 1-9, last in the power rankings and +5000 for the playoffs. Christian McCaffrey (46.3, his 7th team MVP and the top individual score of the league this week) caught touchdowns of 74 and 66 yards and ran for another in San Francisco's 46-40 win in Dallas, and Stefon Diggs (20.3) caught the 32-yard touchdown that beat the Giants on Thursday. Nobody else delivered: Rhamondre Stevenson (1.5 against 13.4, his first team bust) and A.J. Brown (4.7) were no-shows, and Bryce Young (8.1) had a quiet day. Jadarian Price (11.4) scored for Seattle from the bench. Mirsky is next, and Matthew is a 13.5-point underdog."
     }
   }
 };
